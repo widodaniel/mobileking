@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "769968558071",
+    "project_id": "mobileking-bdc7a",
+    "storage_bucket": "mobileking-bdc7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769968558071:android:5aa9e1706e63fedb8868f2",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app_01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769968558071-trp63t603cn8fnqdqq4niuj140e7qre0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCekPLy_5BrAU0gFE7ap8QAgdXpmPeUvPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769968558071-trp63t603cn8fnqdqq4niuj140e7qre0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

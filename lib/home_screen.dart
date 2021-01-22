@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_app_01/register_screen.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,23 +11,46 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  UserCredential userCredential;
   GlobalKey<FormState> _formkey;
   bool _hidepass;
   String _email;
   String _senha;
 
+
+
+
   @override
   void initState() {
+    initFirebase();
+
     _hidepass = true;
     _email = "";
     _senha = "";
     _formkey = GlobalKey<FormState>();
   }
 
-  void onClick() {
-    if (_formkey.currentState.validate())
+  initFirebase()async{
+    await Firebase.initializeApp();
+  }
+
+  void onClick() async {
+
+    if (_formkey.currentState.validate()) {
+      try {
+        userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: _email,
+            password: _senha,
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          print('No user found for that email.');
+        } else if (e.code == 'wrong-password') {
+          print('Wrong password provided for that user.');
+        }
+      }
       debugPrint("Sucesso");
-    else
+    } else
       debugPrint("Falha!!");
   }
 
@@ -132,7 +158,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(RegisterScreen());
+                  },
                   child: Text(
                     "Cadastre-se",
                     style: TextStyle(color: Colors.white),

@@ -1,9 +1,16 @@
+import 'dart:async';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_01/home_screen.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-void main() {
-  runApp(MyApp());
+ main() async {
+
+
+  runZonedGuarded(() {
+    runApp(MyApp());
+  }, (a, b) {});
 }
 
 class MyApp extends StatelessWidget {
@@ -19,5 +26,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
